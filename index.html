@@ -9,6 +9,52 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
+        <button id="menu" onclick="collapse()" style='text-align: center; width: 178px; border: none; font-size:20px; position: fixed; top: 20px; left: 35px; text-align: right; z-index: 2;'>Show Calculations</button>
+        <div class='collapsible' style='background-color: white; width:100%; height:100%'>
+            
+            <div style='position: fixed; top: 100px; right: 35px; text-align: right'>
+                <span>Bytes/sector</span><br>
+                <span id="bytesText">512</span><input type=range id="bytes" min=512 max=4096 step=1 value=512 />
+            </div>
+            <div style='position: fixed; top: 150px; right: 35px; text-align: right'>
+                <span>Sectors/track</span><br>
+                <span id="sectorsText">32</span><input type=range id="sectors" min=1 max=255 step=1 value=32 />
+            </div>
+            <div style='position: fixed; top: 200px; right: 35px; text-align: right'>
+                <span>Tracks/surface</span><br>
+                <span id="tracksText">4</span><input type=range id="tracks" min=1 max=65536 step=1 value=4 />
+            </div>
+            <div style='position: fixed; top: 250px; right: 35px; text-align: right'>
+                <span>Platters/disk</span><br>
+                <span id="plattersText">1</span><input type=range id="platters" min=1 max=10 step=1 value=1 />
+            </div>
+            <div style='position: fixed; top: 300px; right: 35px; text-align: right'>
+                <span>RPM</span><br>
+                <span id="rpmText">7200</span><input type=range id="rpm" min=1200 max=15000 step=1 value=7200 />
+            </div>
+            <div style='position: fixed; top: 350px; right: 35px; text-align: right'>
+                <span>Seek Time</span><br>
+                <span id="seekText">1</span><input type=range id="seek" min=1 max=10 step=1 value=1 />
+            </div>
+            
+            <div style='text-align: center; position:fixed; top:35px; height:95%; width:80%; padding-top:20px; padding-left:20px'>
+                <br><h3 style="">Capacity</h3><br>
+                <span id = "calcC" >
+                    512 bytes/sector x 32 sector(s)/track x 4 track(s)/surface x 2 surfaces/platter x 1 platter(s)/disk =
+                </span>
+                <span id = "resultC" style="color: dodgerblue">
+                    131 kB
+                </span>
+                
+                <br><br><br><br><br><h3 style="">Access Time</h3><br>
+                <span id = "calcA" >
+                    Seek time: 1 ms<br>Rotation time: 0.5*(60s/7200 RPM)*1000ms/s = 4.17 ms<br>Transfer time: (60s/7200 RPM)*(1000ms/s)/(32 sector(s)/track) = 0.26 ms<br><br>Access time: 1 ms + 4.17 ms + 0.26 ms =
+                </span>
+                <span id = "resultA" style="color: dodgerblue">
+                    5.43 ms
+                </span>
+            </div>
+        </div>
         <a-scene
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
@@ -48,6 +94,72 @@
             <a-entity camera></a-entity>
         </a-scene>
         <script type="text/javascript">
+            document.getElementsByClassName("collapsible")[0].style.display = "none";
+            
+            function collapse(){
+                if(document.getElementById('menu').innerHTML=="Show Calculations"){
+                    document.getElementById('menu').innerHTML="Hide Calculations";
+                    document.getElementById('menu').style.paddingRight = "10px";
+                    document.getElementsByClassName("collapsible")[0].style.display = "block";
+                }
+                else{
+                    document.getElementById('menu').innerHTML="Show Calculations";
+                    document.getElementById('menu').style.paddingRight = "6px";
+                    document.getElementsByClassName("collapsible")[0].style.display = "none";
+                }
+            }
+            
+            function update(){
+
+                bytes = parseInt(document.getElementById('bytes').value);
+                sectors = parseInt(document.getElementById('sectors').value);
+                tracks = parseInt(document.getElementById('tracks').value);
+                platters = parseInt(document.getElementById('platters').value);
+                rpm = parseInt(document.getElementById('rpm').value);
+                seek = parseInt(document.getElementById('seek').value);
+                
+                document.getElementById('bytesText').innerHTML = bytes;
+                document.getElementById('sectorsText').innerHTML = sectors;
+                document.getElementById('tracksText').innerHTML = tracks;
+                document.getElementById('plattersText').innerHTML = platters;
+                document.getElementById('rpmText').innerHTML = rpm;
+                document.getElementById('seekText').innerHTML = seek;
+                
+                document.getElementById('calcC').innerHTML = bytes+" bytes/sector x "+sectors+" sector(s)/track x "+ tracks+" track(s)/surface x 2 surfaces/platter x "+platters+" platter(s)/disk =";
+                
+                result = bytes*sectors*tracks*2*platters;
+                
+                if(result>=Math.pow(10,12)){
+                    result = Math.round(result/Math.pow(10,12));
+                    document.getElementById('resultC').innerHTML = result + " TB";
+                }
+                else if(result>=Math.pow(10,9)){
+                    result = Math.round(result/Math.pow(10,9));
+                    document.getElementById('resultC').innerHTML = result + " GB";
+                }
+                else if(result>=Math.pow(10,6)){
+                    result = Math.round(result/Math.pow(10,6));
+                    document.getElementById('resultC').innerHTML = result + " MB";
+                }
+                else if(result>=Math.pow(10,3)){
+                    result = Math.round(result/Math.pow(10,3));
+                    document.getElementById('resultC').innerHTML = result + " kB";
+                }
+                
+                tRot = (.5*60*1000/rpm).toFixed(2);
+                tTrans = ((60*1000)/(rpm*sectors)).toFixed(2);
+                tAccess = (Number(seek) + Number(tRot) + Number(tTrans)).toFixed(2);
+                
+                document.getElementById('calcA').innerHTML = "Seek time: "+seek+"ms<br>Rotation time: 0.5*(60s/"+rpm+" RPM)*1000ms/s = "+tRot + " ms<br>Transfer time: (60s/"+rpm+" RPM)*(1000ms/s)/("+sectors+" sector(s)/track) = "+ tTrans + " ms<br><br>Access time: "+seek+" ms + "+ tRot+" ms + "+tTrans + " ms = ";
+                document.getElementById('resultA').innerHTML = tAccess + " ms";
+            }
+            
+            document.getElementById("bytes").addEventListener("input",update);
+            document.getElementById("sectors").addEventListener("input",update);
+            document.getElementById("tracks").addEventListener("input",update);
+            document.getElementById("platters").addEventListener("input",update);
+            document.getElementById("rpm").addEventListener("input",update);
+            document.getElementById("seek").addEventListener("input",update);
         </script>
     </body>
 </html>
