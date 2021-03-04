@@ -9,7 +9,10 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
-        <button id="menu" onclick="collapse()" style='text-align: center; width: 178px; border: none; font-size:20px; position: fixed; top: 20px; left: 35px; text-align: right; z-index: 2;'>Show Calculations</button>
+        <!--Button to collapse page-->
+        <button id="menu" onclick="collapse()" style='text-align: center; width: 178px; border: none; font-size:20px; position: fixed; top: 20px; left: 35px; text-align: center; z-index: 2;'>Show Calculations</button>
+        
+        <!--Collapsible page-->
         <div class='collapsible' style='background-color: white; width:100%; height:100%'>
             
             <div style='position: fixed; top: 100px; right: 35px; text-align: right'>
@@ -94,17 +97,17 @@
             <a-entity camera></a-entity>
         </a-scene>
         <script type="text/javascript">
+            //start with page hidden
             document.getElementsByClassName("collapsible")[0].style.display = "none";
             
+            //opens and closes the page when button is clicked
             function collapse(){
                 if(document.getElementById('menu').innerHTML=="Show Calculations"){
                     document.getElementById('menu').innerHTML="Hide Calculations";
-                    document.getElementById('menu').style.paddingRight = "10px";
                     document.getElementsByClassName("collapsible")[0].style.display = "block";
                 }
                 else{
                     document.getElementById('menu').innerHTML="Show Calculations";
-                    document.getElementById('menu').style.paddingRight = "6px";
                     document.getElementsByClassName("collapsible")[0].style.display = "none";
                 }
             }
@@ -150,8 +153,8 @@
                 tTrans = ((60*1000)/(rpm*sectors)).toFixed(2);
                 tAccess = (Number(seek) + Number(tRot) + Number(tTrans)).toFixed(2);
                 
-                document.getElementById('calcA').innerHTML = "Seek time: "+seek+"ms<br>Rotation time: 0.5*(60s/"+rpm+" RPM)*1000ms/s = "+tRot + " ms<br>Transfer time: (60s/"+rpm+" RPM)*(1000ms/s)/("+sectors+" sector(s)/track) = "+ tTrans + " ms<br><br>Access time: "+seek+" ms + "+ tRot+" ms + "+tTrans + " ms = ";
-                document.getElementById('resultA').innerHTML = tAccess + " ms";
+                document.getElementById('calcA').innerHTML = "Seek time: "+seek+"ms<br>Rotation time: 0.5*(60s/"+rpm+" RPM)*1000ms/s = "+tRot+" ms<br>Transfer time: (60s/"+rpm+" RPM)*(1000ms/s)/("+sectors+" sector(s)/track) = "+tTrans+" ms<br><br>Access time: "+seek+" ms + "+tRot+" ms + "+tTrans+" ms = ";
+                document.getElementById('resultA').innerHTML = tAccess+" ms";
             }
             
             document.getElementById("bytes").addEventListener("input",update);
