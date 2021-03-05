@@ -19,7 +19,7 @@
                 <span>Bytes/sector</span><br>
                 <span id="bytesText">512</span><input type=range id="bytes" min=512 max=4096 step=1 value=512 />
             </div>
-            <div style='position: fixed; top: 100px; right: 35px; text-align: right'>
+            <div style='position: fixed; background: green; top: 100px; right: 35px; text-align: right'>
                 <span>Sectors/track</span><br>
                 <span id="sectorsText">32</span><input type=range id="sectors" min=1 max=255 step=1 value=32 />
             </div>
@@ -40,7 +40,7 @@
                 <span id="seekText">1 ms</span><input type=range id="seek" min=1 max=10 step=1 value=1 />
             </div>
             
-            <div style='text-align: center; background: blue; opacity: 0.5; position:fixed; top:35px; height:95%; width:70%; padding-top:20px; padding-left:10px'>
+            <div style='text-align: center; background: blue; opacity: 0.5; position:fixed; top:25px; height:95%; width:70%; padding-left:10px'>
                 <h3 style="">Capacity</h3>
                 <span id = "calcC" >
                     512 bytes/sector x 32 sector(s)/track x 4 track(s)/surface x 2 surfaces/platter x 1 platter(s)/disk =
