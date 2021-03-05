@@ -9,7 +9,7 @@ To access the example please scan the following QR code:
 **[Note that if you are using a mobile device you may need to rotate your device to landscape and access the desktop site on your application to see all the UI elements]**
 
 
-![](images/QR-Code.png)
+![](images/frame.png)
 
 
 The marker for this example is given below:
