@@ -1,7 +1,7 @@
 # Hard Disk Drive Example
 **Ver 1.0.0**
 
-The following example portrays a 3D model of a Hard Disk Drive Using AR. Additionally, there is also a page that displays the capacity and access time of a HDD with sliders.
+The following example portrays a 3D model of a Hard Disk Drive using AR. Additionally, there is also a page that displays the capacity and access time of a HDD with parameters that can be changed wth sliders.
 
 
 To access the example please scan the following QR code:
