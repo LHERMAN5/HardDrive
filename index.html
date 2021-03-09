@@ -23,8 +23,23 @@
                 .text{
                     display: none
                 }
-                .title{
-                    text-align: 
+                #byteDiv{
+                    top: 5% !important
+                }
+                #sectorDiv{
+                    top: 15% !important
+                }
+                #trackDiv{
+                    top: 25% !important
+                }
+                #platterDiv{
+                    top: 35% !important
+                }
+                #revDiv{
+                    top: 45% !important
+                }
+                #seekDiv{
+                    top: 55% !important
                 }
             }
         
@@ -38,27 +53,27 @@
         <!--Collapsible page-->
         <div class='collapsible' style='background-color: white; width:100%; height:100%'>
             
-            <div style='position: fixed; top: 10%; right: 3%; text-align: right'>
+            <div id="byteDiv" style='position: fixed; top: 10%; right: 3%; text-align: right'>
                 <span class="title">Bytes/sector</span><br>
                 <span id="bytesText">512</span><input type=range id="bytes" min=512 max=4096 step=1 value=512 />
             </div>
-            <div style='position: fixed; top: 24%; right: 3%; text-align: right'>
+            <div id="sectorDiv" style='position: fixed; top: 24%; right: 3%; text-align: right'>
                 <span class="title">Sectors/track</span><br>
                 <span id="sectorsText">32</span><input type=range id="sectors" min=1 max=255 step=1 value=32 />
             </div>
-            <div style='position: fixed; top: 38%; right: 3%; text-align: right'>
+            <div id="trackDiv" style='position: fixed; top: 38%; right: 3%; text-align: right'>
                 <span class="title">Tracks/surface</span><br>
                 <span id="tracksText">4</span><input type=range id="tracks" min=1 max=65536 step=1 value=4 />
             </div>
-            <div style='position: fixed; top: 52%; right: 3%; text-align: right'>
+            <div id="platterDiv" style='position: fixed; top: 52%; right: 3%; text-align: right'>
                 <span class="title">Platters/disk</span><br>
                 <span id="plattersText">1</span><input type=range id="platters" min=1 max=10 step=1 value=1 />
             </div>
-            <div style='position: fixed; top: 66%; right: 3%; text-align: right'>
+            <div id="revDiv" style='position: fixed; top: 66%; right: 3%; text-align: right'>
                 <span class="title">Revolutions/minute</span><br>
                 <span id="rpmText">7200</span><input type=range id="rpm" min=1200 max=15000 step=1 value=7200 />
             </div>
-            <div style='position: fixed; top: 80%; right: 3%; text-align: right'>
+            <div id="seekDiv" style='position: fixed; top: 80%; right: 3%; text-align: right'>
                 <span class="title">Seek Time</span><br>
                 <span id="seekText">1 ms</span><input type=range id="seek" min=1 max=10 step=1 value=1 />
             </div>
