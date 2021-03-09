@@ -10,7 +10,7 @@
         <link type="text/css" href="styles.css">
         
         <style>
-            @media (max-width:1024px){
+            @media (max-width:800px){
                 span{
                     font-size: 3vw
                 }
@@ -18,12 +18,11 @@
                     width: 85vw
                 }
                 .resultText{
-                    width: 100%;
-                    left: 0px;
-                    top: 42% !important;
-                    //background: orange;
-                    padding-left: 0px;
-                    height: 100%
+                    position: fixed;
+                    top:42%;
+                    left: 0%;
+                    width:100%;
+                    height:100%;
                 }
                 #byteDiv{
                     top: 6% !important
@@ -44,7 +43,15 @@
                     top: 36% !important
                 }
             }
-        
+            @media (min-width:800px){
+                .resultText{
+                    position: fixed;
+                    top:10%;
+                    left: 0%;
+                    width:80%;
+                    height:100%;
+                }
+            }
         </style>
     </head>
 
@@ -53,6 +60,7 @@
         <button id="menu" onclick="collapse()" style='text-align: center; width: 178px; border: none; font-size:20px; position: fixed; top: 20px; left: 35px; text-align: center; z-index: 2;'>Show Calculations</button>
         
         <!--Collapsible page-->
+        
         <div class='collapsible' style='background-color: white; width:100%; height:100%'>
             
             <div id="byteDiv" style='position: fixed; top: 10%; right: 3%; text-align: right'>
@@ -80,7 +88,7 @@
                 <span id="seekText">1 ms</span><input type=range id="seek" min=1 max=10 step=1 value=1 />
             </div>
             
-            <div class="resultText" style='text-align: center; position:fixed; top:25px; height:95%; width:80%; padding-left:10px'>
+            <div class="resultText" style='text-align: center'>
                 <h3 style="">Capacity</h3>
                 <span id = "calcC" >
                     512 bytes/sector x 32 sector(s)/track x 4 track(s)/surface x 2 surfaces/platter x 1 platter(s)/disk =
