@@ -14,6 +14,18 @@
                 h3{
                     color: orange
                 }
+                span{
+                    font-size: 3vw
+                }
+                input{
+                    width: 85vw
+                }
+                .text{
+                    display: none
+                }
+                .title{
+                    text-align: 
+                }
             }
         
         </style>
@@ -27,31 +39,31 @@
         <div class='collapsible' style='background-color: white; width:100%; height:100%'>
             
             <div style='position: fixed; top: 10%; right: 3%; text-align: right'>
-                <span>Bytes/sector</span><br>
+                <span class="title">Bytes/sector</span><br>
                 <span id="bytesText">512</span><input type=range id="bytes" min=512 max=4096 step=1 value=512 />
             </div>
             <div style='position: fixed; top: 24%; right: 3%; text-align: right'>
-                <span>Sectors/track</span><br>
+                <span class="title">Sectors/track</span><br>
                 <span id="sectorsText">32</span><input type=range id="sectors" min=1 max=255 step=1 value=32 />
             </div>
             <div style='position: fixed; top: 38%; right: 3%; text-align: right'>
-                <span>Tracks/surface</span><br>
+                <span class="title">Tracks/surface</span><br>
                 <span id="tracksText">4</span><input type=range id="tracks" min=1 max=65536 step=1 value=4 />
             </div>
             <div style='position: fixed; top: 52%; right: 3%; text-align: right'>
-                <span>Platters/disk</span><br>
+                <span class="title">Platters/disk</span><br>
                 <span id="plattersText">1</span><input type=range id="platters" min=1 max=10 step=1 value=1 />
             </div>
             <div style='position: fixed; top: 66%; right: 3%; text-align: right'>
-                <span>Revolutions/minute</span><br>
+                <span class="title">Revolutions/minute</span><br>
                 <span id="rpmText">7200</span><input type=range id="rpm" min=1200 max=15000 step=1 value=7200 />
             </div>
             <div style='position: fixed; top: 80%; right: 3%; text-align: right'>
-                <span>Seek Time</span><br>
+                <span class="title">Seek Time</span><br>
                 <span id="seekText">1 ms</span><input type=range id="seek" min=1 max=10 step=1 value=1 />
             </div>
             
-            <div style='text-align: center; position:fixed; top:25px; height:95%; width:80%; padding-left:10px'>
+            <div class="text" style='text-align: center; position:fixed; top:25px; height:95%; width:80%; padding-left:10px'>
                 <h3 style="">Capacity</h3>
                 <span id = "calcC" >
                     512 bytes/sector x 32 sector(s)/track x 4 track(s)/surface x 2 surfaces/platter x 1 platter(s)/disk =
