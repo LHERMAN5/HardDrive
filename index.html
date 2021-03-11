@@ -12,10 +12,10 @@
         <style>
             @media (max-width:800px){
                 span{
-                    font-size: 3vw
+                    font-size: 3vw;
                 }
                 input{
-                    width: 85vw
+                    width: 85vw;
                 }
                 .resultText{
                     position: fixed;
@@ -25,25 +25,31 @@
                     height:100%;
                 }
                 #byteDiv{
-                    top: 6% !important
+                    top: 6% !important;
                 }
                 #sectorDiv{
-                    top: 12% !important
+                    top: 12% !important;
                 }
                 #trackDiv{
-                    top: 18% !important
+                    top: 18% !important;
                 }
                 #platterDiv{
-                    top: 24% !important
+                    top: 24% !important;
                 }
                 #revDiv{
-                    top: 30% !important
+                    top: 30% !important;
                 }
                 #seekDiv{
-                    top: 36% !important
+                    top: 36% !important;
+                }
+                .descriptionBox{
+                    font-size: 3.5vw;
                 }
             }
             @media (min-width:800px){
+                span{
+                    font-size: 1.5vw;
+                }
                 .resultText{
                     position: fixed;
                     top:10%;
@@ -51,7 +57,33 @@
                     width:80%;
                     height:100%;
                 }
+                .descriptionBox{
+                    font-size: 2vw;
+                }
             }
+            
+            .descriptionBox{
+                position: relative;
+                display: inline-block;
+                border-bottom: 1px dotted black;
+                font-weight: bold; 
+            }
+            .descriptionBox .descriptionText{
+                visibility: hidden;
+                width: 23vw;
+                background-color: dodgerblue;
+                color: white;
+                text-align: center;
+                position: absolute;
+                border-radius: 6px;
+                padding: 5% 0;
+                top: -5px;
+                left: 105%;
+            }
+            .descriptionBox:hover .descriptionText{
+                visibility: visible;
+            }
+            
         </style>
     </head>
 
@@ -81,7 +113,7 @@
             </div>
             <div id="revDiv" style='position: fixed; top: 66%; right: 3%; text-align: right'>
                 <span class="title">Revolutions/minute</span><br>
-                <span id="rpmText">7200</span><input type=range id="rpm" min=1200 max=15000 step=1 value=7200 />
+                <span id="rpmText">7200</span><input type=range id="rpm" min=5400 max=15000 step=1 value=7200 />
             </div>
             <div id="seekDiv" style='position: fixed; top: 80%; right: 3%; text-align: right'>
                 <span class="title">Seek Time</span><br>
@@ -89,7 +121,10 @@
             </div>
             
             <div class="resultText" style='text-align: center'>
-                <h3 style="">Capacity</h3>
+                <div class="descriptionBox">Capacity
+                    <span style="font-weight: normal; font-size: 15px" class="descriptionText">The amount of storage space on the hard drive.</span>
+                </div><br><br>
+            
                 <span id = "calcC" >
                     512 bytes/sector x 32 sector(s)/track x 4 track(s)/surface x 2 surfaces/platter x 1 platter(s)/disk =
                 </span>
@@ -97,13 +132,16 @@
                     131 kB
                 </span>
                 
-                <br><br><br><h3 style="">Access Time</h3>
+                <br><br><br><br><div class="descriptionBox">Access Time
+                    <span style="font-weight: normal; font-size: 15px" class="descriptionText">The amount of storage space on the hard drive.</span>
+                </div><br><br>
                 <span id = "calcA" >
                     Seek time: 1 ms<br>Rotation time: 0.5*(60s/7200 RPM)*1000ms/s = 4.17 ms<br>Transfer time: (60s/7200 RPM)*(1000ms/s)/(32 sector(s)/track) = 0.26 ms<br><br>Access time: 1 ms + 4.17 ms + 0.26 ms =
                 </span>
                 <span id = "resultA" style="color: dodgerblue">
                     5.43 ms
                 </span>
+                
             </div>
         </div>
         <a-scene
