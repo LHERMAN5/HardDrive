@@ -51,8 +51,7 @@
                 #picture{
                     //position:fixed;
                     width:auto;
-                    height: 30vh;
-                    bottom: 35vh;
+                    height: 25vh;
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
@@ -67,7 +66,10 @@
                     bottom: -5vw;
                 }
                 .col2{
-                    left: 45%;
+                    left: 35%;
+                }
+                .bits{
+                    left: 42%;
                 }
             }
             @media (min-width:800px){
@@ -108,6 +110,12 @@
                 .col2{
                     left: 2%;
                 }
+                .bits{
+                    position:fixed !important;
+                    left:56% !important;
+                    top:10% !important;
+                }
+                
             }
             
             .descriptionBox{
@@ -205,7 +213,7 @@
                 </span>
             </div><br>
             <div class="descriptionBox col2">2. Head
-                    <span style="font-weight: normal; text-align: center;" class="descriptionText">The head reads from the disk by transforming magnetic field into electrical current and writes to the disk by transforming electrical current into a magnetic field.
+                    <span style="font-weight: normal; text-align: center;" class="descriptionText">The head has a wire for reading and one for writing. The head reads from the disk by transforming magnetic field into electrical current and writes to the disk by transforming electrical current into a magnetic field.
                 </span>
             </div><br>
             <div class="descriptionBox col2">3. Platter
@@ -224,6 +232,12 @@
                     <span style="font-weight: normal; text-align: center;" class="descriptionText">A sector is a subdivision of a track which stores bytes of data.
                 </span>
             </div>
+            <br><br>
+            <div class="descriptionBox bits">Bits on the Platter
+                    <span style="font-weight: normal; text-align: center;" class="descriptionText">The boundaries of magnetic field regions on the platter represent bits. If the fields on a border are in opposite directions it is a 1. If they are in the same direction it is a 0.
+                </span>
+            </div>
+          
             
             
             
